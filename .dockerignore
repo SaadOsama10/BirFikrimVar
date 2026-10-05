@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+.git/
+.github/
+docs/
+*.md
+.env
+src/BirFikrimVar/App_Data/
