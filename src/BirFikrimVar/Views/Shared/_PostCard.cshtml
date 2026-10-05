@@ -9,13 +9,20 @@
     <div class="tags">@Model.Tags</div>
     <div class="action">
         <a class="btn btn-primary" asp-controller="Post" asp-action="Details" asp-route-id="@Model.Id">@PostResources.Read</a>
-        @if (saved != null)
+        @if (currentUser != null)
         {
-            <a class="btn btn-primary" asp-controller="Post" asp-action="DeletePost" asp-route-savedPostId="@saved.Id">@PostResources.Saved</a>
-        }
-        else
-        {
-            <a class="btn btn-primary" asp-controller="Post" asp-action="SavedPost" asp-route-id="@Model.Id">@PostResources.SaveForLater</a>
+            @if (saved != null)
+            {
+                <form asp-controller="Post" asp-action="DeletePost" asp-route-savedPostId="@saved.Id" method="post">
+                    <button type="submit" class="btn btn-primary">@PostResources.Saved</button>
+                </form>
+            }
+            else
+            {
+                <form asp-controller="Post" asp-action="SavedPost" asp-route-id="@Model.Id" method="post">
+                    <button type="submit" class="btn btn-primary">@PostResources.SaveForLater</button>
+                </form>
+            }
         }
     </div>
 </div>

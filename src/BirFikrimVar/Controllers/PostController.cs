@@ -79,22 +79,32 @@ namespace BirFikrimVar.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SavedPost(int id)
         {
-            var savedpost = new SavedPost
+            var post = postRepo.GetPostById(id);
+            if (post == null || post.IsPublished != true) return NotFound();
+
+            var userId = users.CurrentUserId;
+            var alreadySaved = savedPostRepo.GetAllSavedPosts(userId).Any(s => s.PostId == id);
+            if (!alreadySaved)
             {
-                PostId = id,
-                UserId = users.CurrentUserId,
-                Date = DateTime.UtcNow
-            };
-            savedPostRepo.Add(savedpost);
+                savedPostRepo.Add(new SavedPost { PostId = id, UserId = userId, Date = DateTime.UtcNow });
+            }
             TempData["SuccessMessage"] = PostResources.PostSavedMessage;
             return RedirectToAction("Index", "Home");
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int savedPostId)
         {
+            // Only the owner may remove a saved post (previously any logged-in user could delete anyone's by id).
+            var savedPost = savedPostRepo.GetSavedPostById(savedPostId);
+            if (savedPost == null || savedPost.UserId != users.CurrentUserId) return NotFound();
+
             savedPostRepo.Delete(savedPostId);
             TempData["SuccessMessage"] = PostResources.DeletePostMessage;
             return RedirectToAction("Index", "Home");
