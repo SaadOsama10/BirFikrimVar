@@ -36,6 +36,8 @@ namespace BirFikrimVar.Areas.Admin.Controllers
             return View(post);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Publish(int id)
         {
             Post post = postRepo.GetPostById(id);
@@ -46,6 +48,8 @@ namespace BirFikrimVar.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Reject(int id)
         {
             Post post = postRepo.GetPostById(id);

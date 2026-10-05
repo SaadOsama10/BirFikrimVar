@@ -26,7 +26,11 @@
     }
 </div>
 
-<div>
-    <a class="btn btn-primary" asp-action="Publish" asp-route-id="@Model.Id">@PostResources.Publish</a>
-    <a class="btn btn-danger" style="margin-inline-start:10px;" asp-action="Reject" asp-route-id="@Model.Id">@PostResources.Reject</a>
+<div class="d-flex" style="gap:10px;">
+    <form asp-action="Publish" asp-route-id="@Model.Id" method="post">
+        <button type="submit" class="btn btn-primary" id="btn-publish">@PostResources.Publish</button>
+    </form>
+    <form asp-action="Reject" asp-route-id="@Model.Id" method="post">
+        <button type="submit" class="btn btn-danger" id="btn-reject">@PostResources.Reject</button>
+    </form>
 </div>
