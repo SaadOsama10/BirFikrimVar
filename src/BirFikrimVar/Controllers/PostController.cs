@@ -33,7 +33,11 @@ namespace BirFikrimVar.Controllers
             Post post = postRepo.GetPostById(id);
             if (post == null) return NotFound();
 
+            // Pending/rejected posts are only visible to their author and to admins.
             var userId = users.CurrentUserId;
+            if (post.IsPublished != true && !(users.IsAdmin || (userId != null && post.Userd == userId)))
+                return NotFound();
+
             ViewBag.LikeCount = postLikeRepo.CountLikes(id);
             ViewBag.HasLiked = (userId != null) && postLikeRepo.HasLiked(userId, id);
 
