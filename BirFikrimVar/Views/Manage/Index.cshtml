@@ -1,0 +1,48 @@
+﻿@model BirFikrimVar.Models.IndexViewModel
+@using BirFikrimVar.Resources
+
+@{
+    ViewBag.Title = PostResources.ManageTitle;
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+
+    <p class="text-success">@ViewBag.StatusMessage</p>
+
+    <div>
+        <h4>@PostResources.AccountSettingsTitle</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>@PostResources.PasswordLabel</dt>
+            <dd>
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink(PostResources.ChangeYourPassword, "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink(PostResources.CreateAction, "SetPassword")
+                }
+                ]
+            </dd>
+
+            <dt>@PostResources.ExternalLoginsLabel</dt>
+            <dd>
+                @Model.Logins.Count [
+                @Html.ActionLink(PostResources.ManageAction, "ManageLogins") ]
+            </dd>
+
+            <dt>@PostResources.TwoFactorTitle</dt>
+            <dd>
+                <p>
+                    @PostResources.TwoFactorNone1
+                    <a href="https://go.microsoft.com/fwlink/?LinkId=403804">@PostResources.Article</a>
+                    @PostResources.TwoFactorNone2
+                </p>
+               
+            </dd>
+        </dl>
+    </div>
+</main>

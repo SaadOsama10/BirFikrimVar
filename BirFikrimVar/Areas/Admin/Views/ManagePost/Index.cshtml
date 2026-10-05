@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BirFikrimVar.DAL.Post>
+@using BirFikrimVar.Resources;
+
+@{
+    ViewBag.Title = PostResources.AdminPostsTitle;
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @PostResources.Title
+        </th>
+   
+        <th>
+            @PostResources.WriterName
+        </th>
+        <th>
+            @PostResources.Date
+        </th>
+      
+       
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Title
+        </td>
+        
+        <td>
+            @UserHelper.GetUserNameById(item.Userd)
+        </td>
+        <td>
+            @(item.PostDate.HasValue?item.PostDate.Value.ToString("dd/MM/yyyy hh:mm tt ") : "")
+        </td>
+     
+        <td>
+           
+            @Html.ActionLink(PostResources.Details, "Details", new { id=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

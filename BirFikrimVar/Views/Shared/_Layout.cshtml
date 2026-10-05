@@ -1,0 +1,94 @@
+﻿@using BirFikrimVar.Resources
+
+@{
+    // حالة اللغة الحالية
+    var ui = System.Threading.Thread.CurrentThread.CurrentUICulture;
+    var isAr = ui.TwoLetterISOLanguageName == "ar";
+    var isRtl = ui.TextInfo.IsRightToLeft;
+    var langCode = ui.TwoLetterISOLanguageName;
+    var back = Request.RawUrl; // علشان نرجع لنفس الصفحة بعد التبديل
+}
+
+<!DOCTYPE html>
+<html lang="@langCode" dir="@(isRtl ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink(SharedResources.ApplicationName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink(SharedResources.MySavedPosts, "SavedPosts", "Post", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+
+                <!-- شريط البحث -->
+            <div class="navbar-form" style="align-self:center; transform: translateY(0px); margin:0 16px;">
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { role = "search" }))
+                {
+                    <div style="display:flex; align-items:center;">
+                        <div id="input-group-search" style="display:flex; align-items:center;">
+                            <div class="input-group" style="display:flex; align-items:center;">
+                                <input type="text"
+                                       class="form-control"
+                                       name="keywords"
+                                       placeholder="@PostResources.Search"
+                                       style="height:34px; line-height:34px;" />
+                                <span class="input-group-btn" style="display:flex; align-items:center;">
+                                    <button class="btn btn-info" type="submit" style="height:34px;">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+                <!-- مبدّل اللغة -->
+                <div class="d-flex" style="gap:6px; align-items:center;">
+                    <a class="btn btn-link"
+                       href="@Url.Action("Set","Lang", new { lang = "en", returnUrl = back })">English</a>
+                    <span class="text-muted">|</span>
+                    <a class="btn btn-link"
+                       href="@Url.Action("Set","Lang", new { lang = "ar", returnUrl = back })">العربية</a>
+                </div>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

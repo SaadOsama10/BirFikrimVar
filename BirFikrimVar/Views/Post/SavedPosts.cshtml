@@ -1,0 +1,45 @@
+﻿@using BirFikrimVar.Resources
+@model IEnumerable<BirFikrimVar.DAL.SavedPost>
+@using BirFikrimVar.DAL
+@{
+    ViewBag.Title = PostResources.SavedPosts;
+}
+
+<main>
+  
+
+    <div class="saved-post-list-wrapper">
+        @foreach (SavedPost savedPost in Model)
+        {
+
+            <div style="
+                border:2px solid #bae6fd;
+                border-radius:8px;
+                padding:12px 18px;
+                margin-bottom:10px;
+                ">
+                <h2 style="margin:0;">@savedPost.Post.Title</h2>
+
+
+                <span class="writer-name">
+                    @UserHelper.GetUserNameById(savedPost.Post.Userd)
+                </span>
+                <div class="tags">
+                    @savedPost.Post.Tags
+                </div>
+                <div class="action">
+                    @Html.ActionLink(PostResources.Read,
+         "Details",
+         "Post",
+         new { id = savedPost.Post.Id },
+         new { @class = "btn btn-primary" })
+
+                   
+                </div>
+            </div>
+        }
+
+    </div>
+
+
+</main>

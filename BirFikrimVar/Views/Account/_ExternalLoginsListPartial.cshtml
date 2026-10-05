@@ -1,0 +1,46 @@
+﻿@model BirFikrimVar.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+@using BirFikrimVar.Resources
+
+<h4>@PostResources.UseAnthor</h4>
+<hr />
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+}
+
+@if (!loginProviders.Any())
+{
+    <div>
+        <p>
+            @PostResources.NonCon1
+            <a href="https://go.microsoft.com/fwlink/?LinkId=403804" target="_blank">@PostResources.Article</a>
+            @PostResources.NonCon2
+        </p>
+    </div>
+}
+else
+{
+    using (Html.BeginForm("ExternalLogin", "Account",
+                          new { ReturnUrl = Model.ReturnUrl },
+                          FormMethod.Post,
+                          new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="socialLoginList">
+            <p>
+                @foreach (AuthenticationDescription p in loginProviders)
+                {
+                    <button type="submit"
+                            class="btn btn-outline-dark"
+                            id="@p.AuthenticationType"
+                            name="provider"
+                            value="@p.AuthenticationType"
+                            title="@string.Format(PostResources.ButtonTitle, p.Caption)">
+                        @p.AuthenticationType
+                    </button>
+                }
+            </p>
+        </div>
+    }
+}

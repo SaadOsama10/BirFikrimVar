@@ -1,0 +1,40 @@
+﻿@model BirFikrimVar.DAL.FeedbackMessage
+@using BirFikrimVar.Resources
+
+@{
+    ViewBag.Title = PostResources.Comment;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.PostId)
+
+    <div class="form-horizontal">
+        <h4>@PostResources.CommentMessage</h4>
+        <h5>@Model.Post.Title @PostResources.By @UserHelper.GetUserNameById(Model.Post.Userd) </h5>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, PostResources.CommentText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+    </div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="@PostResources.Send" class="btn btn-default" />
+    </div>
+</div>
+
+    
+}
+
+

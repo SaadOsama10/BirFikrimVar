@@ -1,0 +1,123 @@
+﻿@using BirFikrimVar.Resources
+@using BirFikrimVar.DAL
+@model BirFikrimVar.DAL.Post
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>@PostResources.Create</h2>
+
+@using (Html.BeginForm("Create", "Post", FormMethod.Post,
+        new { onsubmit = "onFormSubmit()", @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@PostResources.Post</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Title -->
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title, PostResources.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="form-group">
+            @Html.LabelFor(m => m.Tags, PostResources.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.Tags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Post plots -->
+        <div class="post-plot">
+            <h4>@PostResources.PostPlot</h4>
+
+            <!-- عنصر واحد كبداية (هيتنسخ) -->
+            <div class="post-plot-item">
+                <!-- Text -->
+                <div class="form-group">
+                    @Html.Label(PostResources.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @* مهم: الاسم PostPlot[0].Text *@
+                        <textarea name="PostPlot[0].Text"
+                                  class="form-control col-md-10 post-plot-text"
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="form-group">
+                    @Html.Label(PostResources.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @* خليه files عشان يوصل للأكشن كـ IEnumerable<HttpPostedFileBase> *@
+                        <input type="file" name="files[0]" class="post-plot-image" />
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div class="form-group">
+                    @Html.Label(PostResources.Sort, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input type="number" name="PostPlot[0].Sort"
+                               class="form-control col-md-10 post-plot-sort" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- زر إضافة عنصر جديد -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" onclick="AddPostPlot()" class="btn btn-default">+</button>
+            </div>
+        </div>
+
+        <!-- زر الحفظ -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@PostResources.Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        // انسخ آخر عنصر وفضّيه ثم أعد الترقيم
+        function AddPostPlot() {
+            var $last = $('.post-plot .post-plot-item').last();
+            var $clone = $last.clone(true);
+
+            // فضّي القيم
+            $clone.find('.post-plot-text').val('');
+            $clone.find('.post-plot-image').val('');
+            $clone.find('.post-plot-sort').val('');
+
+            $clone.appendTo('.post-plot');
+            reindexPlots();
+        }
+
+        // أعِد تسمية الحقول: PostPlot[0].X, PostPlot[1].X, ...
+        function reindexPlots() {
+            $('.post-plot .post-plot-item').each(function (idx) {
+                $(this).find('.post-plot-text').attr('name', 'PostPlot[' + idx + '].Text');
+                $(this).find('.post-plot-sort').attr('name', 'PostPlot[' + idx + '].Sort');
+                $(this).find('.post-plot-image').attr('name', 'files[' + idx + ']');
+            });
+        }
+
+        // قبل الإرسال تأكد من الترقيم الصحيح
+        function onFormSubmit() {
+            reindexPlots();
+        }
+    </script>
+}
