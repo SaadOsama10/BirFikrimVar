@@ -1,11 +1,14 @@
 using BirFikrimVar.Business;
 using BirFikrimVar.DAL;
 using BirFikrimVar.Resources;
+using BirFikrimVar.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BirFikrimVar.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = DbSeeder.AdminRole)]
     public class ManagePostController : Controller
     {
         IPostRepo postRepo;
