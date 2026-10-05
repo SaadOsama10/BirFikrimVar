@@ -1,10 +1,12 @@
-# Local run: docker compose up --build   ->   http://localhost:8080
+# One command:  docker compose up --build   ->   http://localhost:8080
+# PostgreSQL + the app, seeded with invented demo data. The defaults below are for LOCAL use only;
+# override any of them in a .env file (see .env.example).
 services:
   db:
     image: postgres:16-alpine
     environment:
       POSTGRES_DB: birfikrimvar
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?copy .env.example to .env first}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-localdev-only}
     volumes:
       - dbdata:/var/lib/postgresql/data
     healthcheck:
@@ -18,7 +20,14 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    env_file: .env
+    environment:
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=birfikrimvar;Username=postgres;Password=${POSTGRES_PASSWORD:-localdev-only}
+      Seed__AdminEmail: ${ADMIN_EMAIL:-admin@example.com}
+      Seed__AdminPassword: ${ADMIN_PASSWORD:-Admin-Local-1234}
+      Seed__DemoData: ${DEMO_DATA:-true}
+      Seed__DemoEmail: demo@birfikrimvar.app
+      Seed__DemoPassword: ${DEMO_PASSWORD:-Demo-Pass-2026}
+      Seed__ShowDemoHint: "true"
     ports:
       - "8080:8080"
     volumes:

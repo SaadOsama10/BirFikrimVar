@@ -13,7 +13,7 @@ RUN dotnet publish src/BirFikrimVar/BirFikrimVar.csproj -c Release -o /app --no-
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app ./
-# Uploaded images live here. On Render's free tier this disk is ephemeral (see README, Known Limitations).
+# Uploaded images live here (a named volume in docker-compose).
 RUN mkdir -p /app/uploads && chown -R app:app /app/uploads
 ENV Uploads__Path=/app/uploads \
     ASPNETCORE_ENVIRONMENT=Production \

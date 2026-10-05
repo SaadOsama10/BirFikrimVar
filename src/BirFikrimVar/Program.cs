@@ -13,7 +13,7 @@ using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Render (and most PaaS hosts) tell the container which port to bind through $PORT.
+// PaaS hosts tell the container which port to bind through $PORT.
 var port = Environment.GetEnvironmentVariable("PORT");
 if (!string.IsNullOrEmpty(port)) builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
@@ -142,7 +142,7 @@ using (var scope = app.Services.CreateScope())
 
 app.Run();
 
-// Accepts a standard Npgsql connection string, or a postgres:// URL (what Neon, Supabase and Render hand out).
+// Accepts a standard Npgsql connection string, or a postgres:// URL (the form most hosted PostgreSQL services hand out).
 static string ResolveConnectionString(IConfiguration configuration)
 {
     var raw = configuration.GetConnectionString("DefaultConnection") ?? configuration["DATABASE_URL"];
