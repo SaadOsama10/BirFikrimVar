@@ -53,8 +53,13 @@ namespace BirFikrimVar.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [RequestSizeLimit(25 * 1024 * 1024)]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
+            // Longer than the form allows is not a real submission; also bounds the work done below.
+            if (model.PostPlot == null || model.PostPlot.Count > 10)
+                ModelState.AddModelError("", PostResources.TooManySections);
+
             if (!ModelState.IsValid) return View(model);
 
             var post = new Post
@@ -68,14 +73,30 @@ namespace BirFikrimVar.Controllers
             // To stop accepting posts, and if I delete this, I will bring it back
             // post.IsPublished = true;
 
+            var saved = new List<string>();
             foreach (var plot in model.PostPlot)
             {
+                if (string.IsNullOrWhiteSpace(plot.Text) && (plot.Image == null || plot.Image.Length == 0)) continue;
+
                 var postPlot = new PostPlot { Text = plot.Text, Sort = plot.Sort };
                 if (plot.Image != null && plot.Image.Length > 0)
                 {
                     postPlot.ImageUrl = await images.SaveAsync(plot.Image);
+                    if (postPlot.ImageUrl == null)
+                    {
+                        saved.ForEach(images.Delete);
+                        ModelState.AddModelError("", PostResources.InvalidImage);
+                        return View(model);
+                    }
+                    saved.Add(postPlot.ImageUrl);
                 }
                 post.PostPlot.Add(postPlot);
+            }
+
+            if (post.PostPlot.Count == 0)
+            {
+                ModelState.AddModelError("", PostResources.EmptyPost);
+                return View(model);
             }
 
             postRepo.Add(post);

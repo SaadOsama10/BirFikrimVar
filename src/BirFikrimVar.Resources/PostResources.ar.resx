@@ -65,6 +65,7 @@
   <data name="LockedOut" xml:space="preserve"><value>محاولات فاشلة كثيرة. حاول مجددًا بعد بضع دقائق.</value></data>
   <data name="InvalidImage" xml:space="preserve"><value>يُسمح فقط بصور JPG أو PNG أو GIF أو WebP بحجم أقصى 2 ميغابايت.</value></data>
   <data name="TooManySections" xml:space="preserve"><value>يمكن أن يحتوي المنشور على 10 أقسام كحد أقصى.</value></data>
+  <data name="EmptyPost" xml:space="preserve"><value>أضف نصًا أو صورة إلى قسم واحد على الأقل.</value></data>
   <data name="NoPostsYet" xml:space="preserve"><value>لا توجد منشورات بعد.</value></data>
   <data name="NoResults" xml:space="preserve"><value>لا توجد نتائج.</value></data>
   <data name="NoPendingPosts" xml:space="preserve"><value>لا توجد منشورات بانتظار الموافقة.</value></data>

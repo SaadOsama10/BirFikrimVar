@@ -65,6 +65,7 @@
   <data name="LockedOut" xml:space="preserve"><value>Too many failed attempts. Try again in a few minutes.</value></data>
   <data name="InvalidImage" xml:space="preserve"><value>Only JPG, PNG, GIF or WebP images up to 2 MB are allowed.</value></data>
   <data name="TooManySections" xml:space="preserve"><value>A post can have at most 10 sections.</value></data>
+  <data name="EmptyPost" xml:space="preserve"><value>Add some text or an image to at least one section.</value></data>
   <data name="NoPostsYet" xml:space="preserve"><value>No posts yet.</value></data>
   <data name="NoResults" xml:space="preserve"><value>No results found.</value></data>
   <data name="NoPendingPosts" xml:space="preserve"><value>No posts are waiting for approval.</value></data>

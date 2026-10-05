@@ -73,6 +73,7 @@ namespace BirFikrimVar.Resources
         public static string LockedOut => Get("LockedOut");
         public static string InvalidImage => Get("InvalidImage");
         public static string TooManySections => Get("TooManySections");
+        public static string EmptyPost => Get("EmptyPost");
         public static string NoPostsYet => Get("NoPostsYet");
         public static string NoResults => Get("NoResults");
         public static string NoPendingPosts => Get("NoPendingPosts");
