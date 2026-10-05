@@ -8,17 +8,12 @@
 
 <br/>
 
-[![🚀 Live Demo](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Demo-open%20the%20app-49D8ED?style=for-the-badge&labelColor=1a1b27)](https://birfikrimvar.onrender.com)
-
-<br/>
-
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-8-512BD4?style=flat-square&logo=dotnet&logoColor=white&labelColor=1a1b27)
 ![C#](https://img.shields.io/badge/C%23-12-239120?style=flat-square&logo=csharp&logoColor=white&labelColor=1a1b27)
 ![EF Core](https://img.shields.io/badge/EF%20Core-8-7aa2f7?style=flat-square&labelColor=1a1b27)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white&labelColor=1a1b27)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square&logo=bootstrap&logoColor=white&labelColor=1a1b27)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white&labelColor=1a1b27)
-![Render](https://img.shields.io/badge/Hosted%20on-Render-46E3B7?style=flat-square&logo=render&logoColor=white&labelColor=1a1b27)
 
 ![Demo](docs/demo.gif)
 
@@ -33,14 +28,24 @@ BirFikrimVar ("I have an idea" in Turkish) is a small community site where stude
 
 It started as a university project on ASP.NET MVC 5 with SQL Server. This repository holds the **ASP.NET Core 8 port** (same features, structure, models and UI) that runs on Linux and in Docker, plus a round of security fixes found while porting (see [Security](#security)).
 
-## 🚀 Live demo
+## 🐳 Try it in one command
 
-**<https://birfikrimvar.onrender.com>**
+You need [Docker](https://docs.docker.com/get-docker/). This starts PostgreSQL and the app, applies the migrations and loads invented demo data:
 
-- **Demo account** (shown on the login page): `demo@birfikrimvar.app` / `Demo-Pass-2026`. A regular user: browse, like, save, comment, and submit a post.
-- Posts you submit go to the moderation queue, so they won't appear on the home page until an admin publishes them. The admin flow is shown in the GIF above; admin credentials are not public.
-- The demo contains **invented data only**.
-- ⏳ It runs on Render's free tier, which **sleeps when idle**. The first request after a pause can take **~30–60 seconds** to wake up.
+```bash
+git clone https://github.com/SaadOsama10/BirFikrimVar.git
+cd BirFikrimVar
+docker compose up --build
+```
+
+Then open **http://localhost:8080**.
+
+| Account | Email | Password |
+|---|---|---|
+| Visitor (regular user) | `demo@birfikrimvar.app` | `Demo-Pass-2026` |
+| Admin (moderation) | `admin@example.com` | `Admin-Local-1234` |
+
+These credentials are local-only defaults from `docker-compose.yml`; override them in a `.env` file (see `.env.example`). Posts you submit as the visitor wait in the moderation queue (**Moderation** in the admin's navbar) until the admin publishes them.
 
 ## Features
 
@@ -122,7 +127,7 @@ erDiagram
 | Auth | ASP.NET Core Identity, cookie auth, `Admin` role, lockout |
 | Data | Entity Framework Core 8, Npgsql, PostgreSQL 16, EF migrations (applied at startup) |
 | i18n | `resx` resources (en / ar), cookie-based culture, RTL layout |
-| Hosting | Docker (multi-stage), Render (web service), Neon (PostgreSQL) |
+| Packaging | Docker (multi-stage image), docker-compose with PostgreSQL |
 
 ## Project structure
 
@@ -139,16 +144,9 @@ BirFikrimVar.sln
 └── .github/workflows/build.yml
 ```
 
-## Run locally
+## Run without Docker
 
-**With Docker (recommended)**
-
-```bash
-cp .env.example .env        # then edit the passwords
-docker compose up --build   # http://localhost:8080
-```
-
-**With the .NET 8 SDK and your own PostgreSQL**
+With the .NET 8 SDK and your own PostgreSQL:
 
 ```bash
 export ConnectionStrings__DefaultConnection="Host=localhost;Database=birfikrimvar;Username=postgres;Password=..."
@@ -182,10 +180,10 @@ Porting was a chance to fix problems in the original (each one is its own commit
 
 ## Known limitations
 
-- **Free-tier sleep:** the demo's first load after idle can take ~30–60 s.
-- **Uploaded images are ephemeral on the demo:** Render's free disk is wiped on restart/redeploy, so images users upload disappear (the seeded demo images ship with the app). Use a persistent volume or object storage for real use.
+- **No hosted demo:** run it locally with Docker (see above); the screenshots and GIF come from that setup.
+- Uploaded images are stored on the local filesystem (a Docker volume in `docker-compose.yml`), not in object storage.
 - No email: no email confirmation or password reset. The MVC 5 template's two-factor, phone-number and external-login pages were never configured in the original and were not ported.
-- The demo's rate limiter is in-memory and per instance.
+- The rate limiter is in-memory and per instance.
 - Search is a simple substring match; the feed is not paginated.
 - Validation messages from the framework (e.g. "The Email field is not a valid email address") are in English only.
 - Property names such as `Post.Userd` are kept from the original model.
