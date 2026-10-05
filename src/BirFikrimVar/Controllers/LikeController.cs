@@ -17,8 +17,9 @@ namespace BirFikrimVar.Controllers
             this.users = users;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public IActionResult Toggle(int id) // id = PostId
         {
             var userId = users.CurrentUserId;

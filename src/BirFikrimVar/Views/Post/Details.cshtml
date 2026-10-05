@@ -37,7 +37,9 @@
 <div class="d-flex align-items-center flex-wrap" style="gap:8px;">
     <a class="btn btn-primary" asp-controller="Comment" asp-action="Send" asp-route-id="@Model.Id">@PostResources.Comment</a>
     <a class="btn btn-primary" asp-controller="Comment" asp-action="Inbox" asp-route-id="@Model.Id">@PostResources.ShowComments</a>
-    <a class="@(hasLiked ? "btn btn-primary" : "btn btn-outline-primary")" id="btn-like" asp-controller="Like" asp-action="Toggle" asp-route-id="@Model.Id">@(hasLiked ? PostResources.Liked : PostResources.Like)</a>
+    <form asp-controller="Like" asp-action="Toggle" asp-route-id="@Model.Id" method="post" class="d-inline">
+        <button type="submit" class="@(hasLiked ? "btn btn-primary" : "btn btn-outline-primary")" id="btn-like">@(hasLiked ? PostResources.Liked : PostResources.Like)</button>
+    </form>
     <span id="like-count" class="badge text-bg-secondary">@likeCount</span>
     <a class="btn btn-link" id="btn-show-likers" asp-controller="Like" asp-action="Likers" asp-route-id="@Model.Id">@PostResources.ShowLikers</a>
 </div>
