@@ -52,6 +52,7 @@ namespace BirFikrimVar.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreatePostViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
