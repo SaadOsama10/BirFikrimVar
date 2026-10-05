@@ -62,8 +62,14 @@ namespace BirFikrimVar.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public IActionResult Inbox(int id)
         {
+            // The inbox holds feedback for the post's author; admins can read it too.
+            Post post = postRepo.GetPostById(id);
+            if (post == null) return NotFound();
+            if (!(users.IsAdmin || post.Userd == users.CurrentUserId)) return Forbid();
+
             var model = feedbackMessageRepo.GetAllFeedbackMessage(id);
             return View(model);
         }
