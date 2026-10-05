@@ -8,7 +8,7 @@
 
 <br/>
 
-[![🚀 Live Demo](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Demo-open%20the%20app-49D8ED?style=for-the-badge&labelColor=1a1b27)](__LIVE_URL__)
+[![🚀 Live Demo](https://img.shields.io/badge/%F0%9F%9A%80%20Live%20Demo-open%20the%20app-49D8ED?style=for-the-badge&labelColor=1a1b27)](https://birfikrimvar.onrender.com)
 
 <br/>
 
@@ -35,7 +35,7 @@ It started as a university project on ASP.NET MVC 5 with SQL Server. This reposi
 
 ## 🚀 Live demo
 
-**<__LIVE_URL__>**
+**<https://birfikrimvar.onrender.com>**
 
 - **Demo account** (shown on the login page): `demo@birfikrimvar.app` / `Demo-Pass-2026`. A regular user: browse, like, save, comment, and submit a post.
 - Posts you submit go to the moderation queue, so they won't appear on the home page until an admin publishes them. The admin flow is shown in the GIF above; admin credentials are not public.
