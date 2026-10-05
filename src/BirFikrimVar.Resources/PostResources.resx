@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Create" xml:space="preserve"><value>Create</value></data>
+  <data name="Image" xml:space="preserve"><value>Image</value></data>
+  <data name="Sort" xml:space="preserve"><value>Sort</value></data>
+  <data name="Post" xml:space="preserve"><value>Post</value></data>
+  <data name="PostPlot" xml:space="preserve"><value>Post Sections</value></data>
+  <data name="Tags" xml:space="preserve"><value>Tags</value></data>
+  <data name="Text" xml:space="preserve"><value>Text</value></data>
+  <data name="Title" xml:space="preserve"><value>Title</value></data>
+  <data name="PostAddedMessage" xml:space="preserve"><value>Post submitted — pending approval</value></data>
+  <data name="AdminPostsTitle" xml:space="preserve"><value>Manage Posts</value></data>
+  <data name="WriterName" xml:space="preserve"><value>Name</value></data>
+  <data name="Date" xml:space="preserve"><value>Post Date</value></data>
+  <data name="Details" xml:space="preserve"><value>Details</value></data>
+  <data name="Publish" xml:space="preserve"><value>Publish</value></data>
+  <data name="PostPublishMessage" xml:space="preserve"><value>Post has been published successfully</value></data>
+  <data name="Reject" xml:space="preserve"><value>Reject</value></data>
+  <data name="PostRejectMessage" xml:space="preserve"><value>The post has been rejected successfully</value></data>
+  <data name="Read" xml:space="preserve"><value>Read</value></data>
+  <data name="SaveForLater" xml:space="preserve"><value>Save for later</value></data>
+  <data name="PostSavedMessage" xml:space="preserve"><value>The post has been saved successfully</value></data>
+  <data name="Saved" xml:space="preserve"><value>Saved</value></data>
+  <data name="DeletePostMessage" xml:space="preserve"><value>The post has been unsaved successfully</value></data>
+  <data name="SavedPosts" xml:space="preserve"><value>Saved Posts</value></data>
+  <data name="Comment" xml:space="preserve"><value>Send Comment</value></data>
+  <data name="Send" xml:space="preserve"><value>Send</value></data>
+  <data name="CommentMessage" xml:space="preserve"><value>Comment Message</value></data>
+  <data name="CommentText" xml:space="preserve"><value>Comment Text</value></data>
+  <data name="By" xml:space="preserve"><value>by</value></data>
+  <data name="CommentSent" xml:space="preserve"><value>Your comment has been sent successfully</value></data>
+  <data name="ShowComments" xml:space="preserve"><value>Show Comments</value></data>
+  <data name="Search" xml:space="preserve"><value>Search</value></data>
+  <data name="SearchResultLabel" xml:space="preserve"><value>Search Results for</value></data>
+  <data name="LikeRemoved" xml:space="preserve"><value>Like has been removed</value></data>
+  <data name="LikeAdded" xml:space="preserve"><value>Like has been added successfully</value></data>
+  <data name="Liked" xml:space="preserve"><value>Liked</value></data>
+  <data name="Like" xml:space="preserve"><value>Like</value></data>
+  <data name="ShowLikers" xml:space="preserve"><value>Show Likers</value></data>
+  <data name="NoLikersYet" xml:space="preserve"><value>No Likers Yet</value></data>
+  <data name="RegisterTitle" xml:space="preserve"><value>Register</value></data>
+  <data name="RegisterBtn" xml:space="preserve"><value>Register</value></data>
+  <data name="Email" xml:space="preserve"><value>Email</value></data>
+  <data name="LoginTitle" xml:space="preserve"><value>Log in</value></data>
+  <data name="LocalLoginHeading" xml:space="preserve"><value>Use a local account to log in</value></data>
+  <data name="Password" xml:space="preserve"><value>Password</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>Remember me</value></data>
+  <data name="RegisterNewUser" xml:space="preserve"><value>Register as a new user</value></data>
+  <data name="CreateAccountHeading" xml:space="preserve"><value>Create a new account</value></data>
+  <data name="ConfirmPassword" xml:space="preserve"><value>Confirm Password</value></data>
+  <data name="ChangePasswordTitle" xml:space="preserve"><value>Change Password</value></data>
+  <data name="ChangePasswordForm" xml:space="preserve"><value>Change Password Form</value></data>
+  <data name="CurrentPassword" xml:space="preserve"><value>Current password</value></data>
+  <data name="NewPassword" xml:space="preserve"><value>New password</value></data>
+  <data name="ConfirmNewPassword" xml:space="preserve"><value>Confirm new password</value></data>
+  <data name="ChangePasswordButton" xml:space="preserve"><value>Change password</value></data>
+  <data name="ManageTitle" xml:space="preserve"><value>Manage</value></data>
+  <data name="AccountSettingsTitle" xml:space="preserve"><value>Change your account settings</value></data>
+  <data name="PasswordChanged" xml:space="preserve"><value>Your password has been changed.</value></data>
+  <data name="InvalidLogin" xml:space="preserve"><value>Invalid login attempt.</value></data>
+  <data name="LockedOut" xml:space="preserve"><value>Too many failed attempts. Try again in a few minutes.</value></data>
+  <data name="InvalidImage" xml:space="preserve"><value>Only JPG, PNG, GIF or WebP images up to 2 MB are allowed.</value></data>
+  <data name="TooManySections" xml:space="preserve"><value>A post can have at most 10 sections.</value></data>
+  <data name="NoPostsYet" xml:space="preserve"><value>No posts yet.</value></data>
+  <data name="NoResults" xml:space="preserve"><value>No results found.</value></data>
+  <data name="NoPendingPosts" xml:space="preserve"><value>No posts are waiting for approval.</value></data>
+  <data name="DemoAccountHint" xml:space="preserve"><value>Demo account for visitors:</value></data>
+  <data name="Back" xml:space="preserve"><value>Back</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>Something went wrong</value></data>
+  <data name="NotFoundTitle" xml:space="preserve"><value>Page not found</value></data>
+  <data name="AdminLink" xml:space="preserve"><value>Moderation</value></data>
+  <data name="AddSection" xml:space="preserve"><value>Add section</value></data>
+</root>

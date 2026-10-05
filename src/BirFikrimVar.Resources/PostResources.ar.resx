@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Create" xml:space="preserve"><value>إنشاء</value></data>
+  <data name="Image" xml:space="preserve"><value>صورة</value></data>
+  <data name="Sort" xml:space="preserve"><value>ترتيب</value></data>
+  <data name="Post" xml:space="preserve"><value>منشور</value></data>
+  <data name="PostPlot" xml:space="preserve"><value>أقسام المنشور</value></data>
+  <data name="Tags" xml:space="preserve"><value>وسوم</value></data>
+  <data name="Text" xml:space="preserve"><value>نص</value></data>
+  <data name="Title" xml:space="preserve"><value>العنوان</value></data>
+  <data name="PostAddedMessage" xml:space="preserve"><value>تم إرسال المنشور — بانتظار الموافقة</value></data>
+  <data name="AdminPostsTitle" xml:space="preserve"><value>إدارة المنشورات</value></data>
+  <data name="WriterName" xml:space="preserve"><value>الاسم</value></data>
+  <data name="Date" xml:space="preserve"><value>تاريخ المنشور</value></data>
+  <data name="Details" xml:space="preserve"><value>التفاصيل</value></data>
+  <data name="Publish" xml:space="preserve"><value>انشر</value></data>
+  <data name="PostPublishMessage" xml:space="preserve"><value>تم نشر المنشور بنجاح</value></data>
+  <data name="Reject" xml:space="preserve"><value>رفض</value></data>
+  <data name="PostRejectMessage" xml:space="preserve"><value>تم رفض المنشور بنجاح</value></data>
+  <data name="Read" xml:space="preserve"><value>قراءة</value></data>
+  <data name="SaveForLater" xml:space="preserve"><value>حفظ للقراءة لاحقًا</value></data>
+  <data name="PostSavedMessage" xml:space="preserve"><value>تم حفظ المنشور بنجاح</value></data>
+  <data name="Saved" xml:space="preserve"><value>محفوظة</value></data>
+  <data name="DeletePostMessage" xml:space="preserve"><value>تم التراجع عن حفظ المنشور بنجاح</value></data>
+  <data name="SavedPosts" xml:space="preserve"><value>المنشورات المحفوظة</value></data>
+  <data name="Comment" xml:space="preserve"><value>أضف تعليقًا</value></data>
+  <data name="Send" xml:space="preserve"><value>أرسل</value></data>
+  <data name="CommentMessage" xml:space="preserve"><value>تعليق على المنشور</value></data>
+  <data name="CommentText" xml:space="preserve"><value>نص التعليق</value></data>
+  <data name="By" xml:space="preserve"><value>بقلم</value></data>
+  <data name="CommentSent" xml:space="preserve"><value>تم إرسال تعليقك بنجاح</value></data>
+  <data name="ShowComments" xml:space="preserve"><value>عرض التعليقات</value></data>
+  <data name="Search" xml:space="preserve"><value>بحث</value></data>
+  <data name="SearchResultLabel" xml:space="preserve"><value>نتائج البحث عن</value></data>
+  <data name="LikeRemoved" xml:space="preserve"><value>تمت إزالة الإعجاب</value></data>
+  <data name="LikeAdded" xml:space="preserve"><value>تمت إضافة الإعجاب بنجاح</value></data>
+  <data name="Liked" xml:space="preserve"><value>تم الإعجاب</value></data>
+  <data name="Like" xml:space="preserve"><value>إعجاب</value></data>
+  <data name="ShowLikers" xml:space="preserve"><value>عرض المعجبين</value></data>
+  <data name="NoLikersYet" xml:space="preserve"><value>لا معجبين بعد</value></data>
+  <data name="RegisterTitle" xml:space="preserve"><value>تسجيل</value></data>
+  <data name="RegisterBtn" xml:space="preserve"><value>تسجيل</value></data>
+  <data name="Email" xml:space="preserve"><value>البريد الإلكتروني</value></data>
+  <data name="LoginTitle" xml:space="preserve"><value>تسجيل الدخول</value></data>
+  <data name="LocalLoginHeading" xml:space="preserve"><value>استخدم حسابًا محليًا لتسجيل الدخول</value></data>
+  <data name="Password" xml:space="preserve"><value>كلمة المرور</value></data>
+  <data name="RememberMe" xml:space="preserve"><value>تذكرني</value></data>
+  <data name="RegisterNewUser" xml:space="preserve"><value>تسجيل مستخدم جديد</value></data>
+  <data name="CreateAccountHeading" xml:space="preserve"><value>إنشاء حساب جديد</value></data>
+  <data name="ConfirmPassword" xml:space="preserve"><value>تأكيد كلمة المرور</value></data>
+  <data name="ChangePasswordTitle" xml:space="preserve"><value>تغيير كلمة المرور</value></data>
+  <data name="ChangePasswordForm" xml:space="preserve"><value>نموذج تغيير كلمة المرور</value></data>
+  <data name="CurrentPassword" xml:space="preserve"><value>كلمة المرور الحالية</value></data>
+  <data name="NewPassword" xml:space="preserve"><value>كلمة المرور الجديدة</value></data>
+  <data name="ConfirmNewPassword" xml:space="preserve"><value>تأكيد كلمة المرور الجديدة</value></data>
+  <data name="ChangePasswordButton" xml:space="preserve"><value>تغيير كلمة المرور</value></data>
+  <data name="ManageTitle" xml:space="preserve"><value>إدارة الحساب</value></data>
+  <data name="AccountSettingsTitle" xml:space="preserve"><value>غيّر إعدادات حسابك</value></data>
+  <data name="PasswordChanged" xml:space="preserve"><value>تم تغيير كلمة المرور.</value></data>
+  <data name="InvalidLogin" xml:space="preserve"><value>محاولة تسجيل دخول غير صحيحة.</value></data>
+  <data name="LockedOut" xml:space="preserve"><value>محاولات فاشلة كثيرة. حاول مجددًا بعد بضع دقائق.</value></data>
+  <data name="InvalidImage" xml:space="preserve"><value>يُسمح فقط بصور JPG أو PNG أو GIF أو WebP بحجم أقصى 2 ميغابايت.</value></data>
+  <data name="TooManySections" xml:space="preserve"><value>يمكن أن يحتوي المنشور على 10 أقسام كحد أقصى.</value></data>
+  <data name="NoPostsYet" xml:space="preserve"><value>لا توجد منشورات بعد.</value></data>
+  <data name="NoResults" xml:space="preserve"><value>لا توجد نتائج.</value></data>
+  <data name="NoPendingPosts" xml:space="preserve"><value>لا توجد منشورات بانتظار الموافقة.</value></data>
+  <data name="DemoAccountHint" xml:space="preserve"><value>حساب تجريبي للزوار:</value></data>
+  <data name="Back" xml:space="preserve"><value>رجوع</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>حدث خطأ ما</value></data>
+  <data name="NotFoundTitle" xml:space="preserve"><value>الصفحة غير موجودة</value></data>
+  <data name="AdminLink" xml:space="preserve"><value>الإشراف</value></data>
+  <data name="AddSection" xml:space="preserve"><value>إضافة قسم</value></data>
+</root>
