@@ -31,6 +31,7 @@ namespace BirFikrimVar.Controllers
 
             var model = postRepo
                 .GetAllPosts()
+                .Where(p => p.IsPublished == true) // pending and rejected posts must never be searchable
                 .Where(p =>
                     ((p.Title ?? "").Contains(keywords, StringComparison.OrdinalIgnoreCase)) ||
                     ((p.Tags ?? "").Contains(keywords, StringComparison.OrdinalIgnoreCase))
