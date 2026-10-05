@@ -24,7 +24,7 @@ namespace BirFikrimVar.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpGet]
         public IActionResult Search(string keywords)
         {
             keywords = (keywords ?? "").Trim();
