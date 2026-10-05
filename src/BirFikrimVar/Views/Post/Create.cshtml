@@ -1,0 +1,60 @@
+@model CreatePostViewModel
+@{
+    ViewData["Title"] = PostResources.Create;
+}
+
+<h2>@PostResources.Create</h2>
+
+<form asp-controller="Post" asp-action="Create" method="post" enctype="multipart/form-data" id="post-form">
+    <div class="form-horizontal">
+        <h4>@PostResources.Post</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">@PostResources.Title</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Tags" class="form-label">@PostResources.Tags</label>
+            <input asp-for="Tags" class="form-control" />
+            <span asp-validation-for="Tags" class="text-danger"></span>
+        </div>
+
+        <div class="post-plot">
+            <h4>@PostResources.PostPlot</h4>
+            @for (var i = 0; i < Model.PostPlot.Count; i++)
+            {
+                <div class="post-plot-item">
+                    <div class="mb-3">
+                        <label class="form-label">@PostResources.Text</label>
+                        <textarea name="PostPlot[@i].Text" class="form-control post-plot-text" rows="3">@Model.PostPlot[i].Text</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">@PostResources.Image</label>
+                        <input type="file" name="PostPlot[@i].Image" class="form-control post-plot-image" accept="image/*" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">@PostResources.Sort</label>
+                        <input type="number" name="PostPlot[@i].Sort" class="form-control post-plot-sort" value="@Model.PostPlot[i].Sort" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="mb-3">
+            <button type="button" id="add-plot" class="btn btn-outline-primary" aria-label="@PostResources.AddSection">+</button>
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" value="@PostResources.Create" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScripts" />
+    <script src="~/js/post-create.js" asp-append-version="true"></script>
+}

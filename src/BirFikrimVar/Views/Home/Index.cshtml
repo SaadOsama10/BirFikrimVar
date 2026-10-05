@@ -1,0 +1,23 @@
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<main>
+    <section class="row text-center my-4" aria-labelledby="title">
+        <h1 id="title">@SharedResources.ApplicationName</h1>
+        <p class="lead">@SharedResources.ApplicationDescription</p>
+        <p><a asp-controller="Post" asp-action="Create" class="btn btn-primary btn-md">@SharedResources.btnHaveIdea</a></p>
+    </section>
+
+    <div class="post-list-wrapper">
+        @foreach (var post in Model)
+        {
+            <partial name="_PostCard" model="post" />
+        }
+        @if (!Model.Any())
+        {
+            <p class="text-muted">@PostResources.NoPostsYet</p>
+        }
+    </div>
+</main>

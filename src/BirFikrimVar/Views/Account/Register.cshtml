@@ -1,0 +1,30 @@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = PostResources.RegisterTitle;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Account" asp-action="Register" method="post">
+    <h4>@PostResources.CreateAccountHeading</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">@PostResources.Email</label>
+        <input asp-for="Email" class="form-control" autocomplete="username" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label">@PostResources.Password</label>
+        <input asp-for="Password" class="form-control" autocomplete="new-password" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label">@PostResources.ConfirmPassword</label>
+        <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" />
+    </div>
+    <input type="submit" class="btn btn-primary" value="@PostResources.RegisterBtn" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScripts" />
+}

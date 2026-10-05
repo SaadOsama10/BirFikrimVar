@@ -1,0 +1,48 @@
+@model LoginViewModel
+@inject Microsoft.Extensions.Configuration.IConfiguration Config
+@{
+    ViewData["Title"] = PostResources.LoginTitle;
+    var showHint = Config.GetValue<bool>("Seed:ShowDemoHint");
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@ViewBag.ReturnUrl" method="post">
+                <h4>@PostResources.LocalLoginHeading</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">@PostResources.Email</label>
+                    <input asp-for="Email" class="form-control" autocomplete="username" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">@PostResources.Password</label>
+                    <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                </div>
+                <div class="mb-3 form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label asp-for="RememberMe" class="form-check-label">@PostResources.RememberMe</label>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="@PostResources.LoginTitle" class="btn btn-primary" />
+                </div>
+                <p><a asp-action="Register">@PostResources.RegisterNewUser</a></p>
+            </form>
+
+            @if (showHint)
+            {
+                <div class="demo-hint" id="demo-hint" dir="ltr">
+                    <strong>@PostResources.DemoAccountHint</strong><br />
+                    <code>@Config["Seed:DemoEmail"]</code> / <code>@Config["Seed:DemoPassword"]</code>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScripts" />
+}

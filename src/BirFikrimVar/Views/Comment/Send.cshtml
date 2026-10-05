@@ -1,0 +1,27 @@
+@model SendCommentViewModel
+@{
+    ViewData["Title"] = PostResources.Comment;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-controller="Comment" asp-action="Send" method="post">
+    <input type="hidden" asp-for="PostId" />
+    <div class="form-horizontal">
+        <h4>@PostResources.CommentMessage</h4>
+        <h5>@Model.PostTitle @PostResources.By @Model.PostAuthor</h5>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Text" class="form-label">@PostResources.CommentText</label>
+            <textarea asp-for="Text" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+        <input type="submit" value="@PostResources.Send" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScripts" />
+}

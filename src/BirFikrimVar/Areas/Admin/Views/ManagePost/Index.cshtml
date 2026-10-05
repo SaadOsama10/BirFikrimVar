@@ -1,0 +1,28 @@
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = PostResources.AdminPostsTitle;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <tr>
+        <th>@PostResources.Title</th>
+        <th>@PostResources.WriterName</th>
+        <th>@PostResources.Date</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@Users.GetUserName(item.Userd)</td>
+            <td>@(item.PostDate.HasValue ? item.PostDate.Value.ToString("dd/MM/yyyy hh:mm tt") : "")</td>
+            <td><a asp-action="Details" asp-route-id="@item.Id">@PostResources.Details</a></td>
+        </tr>
+    }
+</table>
+@if (!Model.Any())
+{
+    <p class="text-muted">@PostResources.NoPendingPosts</p>
+}

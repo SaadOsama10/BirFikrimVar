@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Tajawal');
+
+body {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-family: 'Tajawal', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.form-control {
+    max-width: 480px;
+}
+
+.post-card {
+    border: 2px solid #bae6fd;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 30px;
+}
+
+.post-card h2 {
+    margin: 0;
+}
+
+.post-card .action {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.post-card .writer-name {
+    display: block;
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+.post-card .tags {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.post-plot-item img {
+    padding: 16px;
+}
+
+.post-plot-item p {
+    margin-top: 16px;
+    font-size: 18px;
+    white-space: pre-line;
+}
+
+.post-plot-item {
+    padding: 16px;
+}
+
+.message-item {
+    background: #FAFAFA;
+    padding: 15px 30px;
+    margin: 5px;
+}
+
+.message-date {
+    float: inline-end;
+}
+
+.message-sender {
+    font-weight: bold;
+}
+
+#input-group-search {
+    padding: 3px;
+    border: solid 1px #49D8ED;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#input-group-search input {
+    border: 0;
+    box-shadow: none;
+}
+
+#input-group-search button {
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #49D8ED;
+    padding: 0 8px;
+}
+
+.btn-primary {
+    background-color: #49D8ED;
+    border-color: #49D8ED;
+    color: #04323a;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+    background-color: #49D8EA;
+    border-color: #49D8EA;
+    color: #04323a;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #0a8ea1;
+    border: 1px solid #49D8ED;
+}
+
+.btn-outline-primary:hover {
+    background-color: #49D8ED;
+    color: #04323a;
+}
+
+.btn-link-inline {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+}
+
+#like-count {
+    vertical-align: middle;
+    margin-inline-start: 8px;
+}
+
+.field-validation-error, .text-danger {
+    color: #dc3545;
+}
+
+.demo-hint {
+    background: #f1fbfd;
+    border: 1px dashed #49D8ED;
+    border-radius: 8px;
+    padding: 10px 14px;
+    max-width: 480px;
+}

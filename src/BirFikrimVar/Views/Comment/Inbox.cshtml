@@ -1,0 +1,16 @@
+@model IEnumerable<FeedbackMessage>
+@{
+    ViewData["Title"] = PostResources.ShowComments;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var item in Model)
+{
+    <div class="message-item">
+        <h3>@item.Post.Title</h3>
+        <span class="message-date">@(item.Date.HasValue ? item.Date.Value.ToString("dd/MM/yyyy") : "")</span>
+        <p>@item.Text</p>
+        <div class="message-sender">@Users.GetUserName(item.UserId)</div>
+    </div>
+}

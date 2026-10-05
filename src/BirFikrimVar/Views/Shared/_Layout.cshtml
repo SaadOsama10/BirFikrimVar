@@ -1,0 +1,77 @@
+@using System.Globalization
+@{
+    var ui = CultureInfo.CurrentUICulture;
+    var isRtl = ui.TextInfo.IsRightToLeft;
+    var langCode = ui.TwoLetterISOLanguageName;
+    var back = Context.Request.Path + Context.Request.QueryString;
+    var isAuth = User.Identity != null && User.Identity.IsAuthenticated;
+}
+<!DOCTYPE html>
+<html lang="@langCode" dir="@(isRtl ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - @SharedResources.ApplicationName</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A1%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="~/css/@(isRtl ? "bootstrap.rtl.min.css" : "bootstrap.min.css")" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@SharedResources.ApplicationName</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-main" aria-controls="nav-main"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="nav-main">
+                <ul class="navbar-nav flex-grow-1">
+                    @if (isAuth)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Post" asp-action="SavedPosts">@SharedResources.MySavedPosts</a></li>
+                    }
+                    @if (Users.IsAdmin)
+                    {
+                        <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="ManagePost" asp-action="Index">@PostResources.AdminLink</a></li>
+                    }
+                </ul>
+
+                <form asp-area="" asp-controller="Home" asp-action="Search" method="post" role="search" class="my-2 my-sm-0 mx-sm-3">
+                    <div id="input-group-search" class="d-flex align-items-center">
+                        <input type="text" class="form-control" name="keywords" placeholder="@PostResources.Search" aria-label="@PostResources.Search" />
+                        <button type="submit" aria-label="@PostResources.Search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="d-flex align-items-center" style="gap:6px;">
+                    <a class="btn btn-link" id="lang-en" href="@Url.Action("Set", "Lang", new { area = "", lang = "en", returnUrl = back })">English</a>
+                    <span class="text-muted">|</span>
+                    <a class="btn btn-link" id="lang-ar" href="@Url.Action("Set", "Lang", new { area = "", lang = "ar", returnUrl = back })">العربية</a>
+                </div>
+
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.UtcNow.Year - @SharedResources.ApplicationName</p>
+        </footer>
+    </div>
+
+    <script src="~/js/jquery-3.7.0.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

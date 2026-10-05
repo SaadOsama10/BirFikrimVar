@@ -1,0 +1,21 @@
+@model IEnumerable<Post>
+@{
+    ViewData["Title"] = PostResources.Search;
+}
+
+<div style="font-size:20px; font-weight:bold; margin:20px 0;">
+    @PostResources.SearchResultLabel @ViewBag.Keywords
+</div>
+
+<main>
+    <div>
+        @foreach (var post in Model)
+        {
+            <partial name="_PostCard" model="post" />
+        }
+        @if (!Model.Any())
+        {
+            <p class="text-muted">@PostResources.NoResults</p>
+        }
+    </div>
+</main>

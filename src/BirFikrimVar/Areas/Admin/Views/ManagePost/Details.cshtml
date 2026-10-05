@@ -1,0 +1,32 @@
+@model Post
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h2 class="post-header">@Model.Title</h2>
+<div>
+    <h4 class="post-tags">@Model.Tags</h4>
+</div>
+<hr />
+
+<div class="post-plot-wrapper">
+    @foreach (var postplot in Model.PostPlot)
+    {
+        <div class="row post-plot-item" style="margin-bottom:20px;">
+            <div class="col-md-4">
+                @if (!string.IsNullOrEmpty(postplot.ImageUrl))
+                {
+                    <img src="@postplot.ImageUrl" alt="" style="width:100%; height:250px; object-fit:cover;" />
+                }
+            </div>
+            <div class="col-md-8">
+                <p>@postplot.Text</p>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Publish" asp-route-id="@Model.Id">@PostResources.Publish</a>
+    <a class="btn btn-danger" style="margin-inline-start:10px;" asp-action="Reject" asp-route-id="@Model.Id">@PostResources.Reject</a>
+</div>

@@ -1,0 +1,25 @@
+@model IEnumerable<SavedPost>
+@{
+    ViewData["Title"] = PostResources.SavedPosts;
+}
+
+<h2>@PostResources.SavedPosts</h2>
+<main>
+    <div class="saved-post-list-wrapper">
+        @foreach (var savedPost in Model)
+        {
+            <div class="post-card">
+                <h2>@savedPost.Post.Title</h2>
+                <span class="writer-name">@Users.GetUserName(savedPost.Post.Userd)</span>
+                <div class="tags">@savedPost.Post.Tags</div>
+                <div class="action">
+                    <a class="btn btn-primary" asp-controller="Post" asp-action="Details" asp-route-id="@savedPost.Post.Id">@PostResources.Read</a>
+                </div>
+            </div>
+        }
+        @if (!Model.Any())
+        {
+            <p class="text-muted">@PostResources.NoPostsYet</p>
+        }
+    </div>
+</main>

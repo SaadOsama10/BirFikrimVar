@@ -1,0 +1,7 @@
+@model int
+@{
+    ViewData["Title"] = Model == 404 ? PostResources.NotFoundTitle : PostResources.ErrorTitle;
+}
+<h2>@Model</h2>
+<p class="lead">@ViewData["Title"]</p>
+<p><a asp-controller="Home" asp-action="Index">@PostResources.Back</a></p>

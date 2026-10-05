@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = PostResources.ManageTitle;
+}
+
+<h2>@ViewData["Title"]</h2>
+<p class="text-success">@PostResources.AccountSettingsTitle</p>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@PostResources.Email</dt>
+    <dd class="col-sm-9">@User.Identity.Name</dd>
+    <dt class="col-sm-3">@PostResources.Password</dt>
+    <dd class="col-sm-9"><a asp-action="ChangePassword">@PostResources.ChangePasswordTitle</a></dd>
+</dl>

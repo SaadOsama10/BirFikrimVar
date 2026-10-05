@@ -1,0 +1,43 @@
+@model Post
+@{
+    ViewData["Title"] = Model.Title;
+    var likeCount = ViewBag.LikeCount as int? ?? 0;
+    var hasLiked = ViewBag.HasLiked as bool? ?? false;
+}
+
+<h2 class="post-header">@Model.Title</h2>
+<div>
+    <h4 class="post-tags">@Model.Tags</h4>
+</div>
+<hr />
+
+<div class="post-plot-wrapper">
+    @foreach (var postplot in Model.PostPlot)
+    {
+        <div class="row post-plot-item" style="margin-bottom:20px;">
+            @if (!string.IsNullOrWhiteSpace(postplot.ImageUrl))
+            {
+                <div class="col-md-4">
+                    <img src="@postplot.ImageUrl" alt="" style="width:100%; height:250px; object-fit:cover;" />
+                </div>
+                <div class="col-md-8">
+                    <p>@postplot.Text</p>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    <p>@postplot.Text</p>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div class="d-flex align-items-center flex-wrap" style="gap:8px;">
+    <a class="btn btn-primary" asp-controller="Comment" asp-action="Send" asp-route-id="@Model.Id">@PostResources.Comment</a>
+    <a class="btn btn-primary" asp-controller="Comment" asp-action="Inbox" asp-route-id="@Model.Id">@PostResources.ShowComments</a>
+    <a class="@(hasLiked ? "btn btn-primary" : "btn btn-outline-primary")" id="btn-like" asp-controller="Like" asp-action="Toggle" asp-route-id="@Model.Id">@(hasLiked ? PostResources.Liked : PostResources.Like)</a>
+    <span id="like-count" class="badge text-bg-secondary">@likeCount</span>
+    <a class="btn btn-link" id="btn-show-likers" asp-controller="Like" asp-action="Likers" asp-route-id="@Model.Id">@PostResources.ShowLikers</a>
+</div>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BirFikrimVar.Business\BirFikrimVar.Business.csproj" />
+    <ProjectReference Include="..\BirFikrimVar.DAL\BirFikrimVar.DAL.csproj" />
+    <ProjectReference Include="..\BirFikrimVar.Resources\BirFikrimVar.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

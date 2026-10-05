@@ -1,0 +1,21 @@
+@model Post
+@{
+    var currentUser = Users.CurrentUserId;
+    var saved = currentUser == null ? null : Model.SavedPost?.FirstOrDefault(p => p.UserId == currentUser);
+}
+<div class="post-card">
+    <h2>@Model.Title</h2>
+    <span class="writer-name">@Users.GetUserName(Model.Userd)</span>
+    <div class="tags">@Model.Tags</div>
+    <div class="action">
+        <a class="btn btn-primary" asp-controller="Post" asp-action="Details" asp-route-id="@Model.Id">@PostResources.Read</a>
+        @if (saved != null)
+        {
+            <a class="btn btn-primary" asp-controller="Post" asp-action="DeletePost" asp-route-savedPostId="@saved.Id">@PostResources.Saved</a>
+        }
+        else
+        {
+            <a class="btn btn-primary" asp-controller="Post" asp-action="SavedPost" asp-route-id="@Model.Id">@PostResources.SaveForLater</a>
+        }
+    </div>
+</div>
